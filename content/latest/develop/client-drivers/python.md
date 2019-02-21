@@ -36,6 +36,9 @@ menu:
   <div id="cql" class="tab-pane fade show active" role="tabpanel" aria-labelledby="cql-tab">
     {{% includeMarkdown "cassandra/python.md" /%}}
   </div>
+  <div id="redis" class="tab-pane fade" role="tabpanel" aria-labelledby="redis-tab">
+    {{% includeMarkdown "redis/python.md" /%}}
+  </div>
   <div id="ysql" class="tab-pane fade" role="tabpanel" aria-labelledby="ysql-tab">
     {{% includeMarkdown "ysql/python.md" /%}}
   </div>
