@@ -1,7 +1,7 @@
 
 ## Maven
 
-To build your Java application using the Postgresql driver, add the following Maven dependency to your application:
+To build your Java application using the Postgresql JDBC driver, add the following Maven dependency to your application:
 
 ```mvn
 <dependency>
