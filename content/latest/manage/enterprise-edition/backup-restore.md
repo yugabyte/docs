@@ -40,9 +40,12 @@ Note that when there are more than 1 nodes, an nfs mounted on each server is rec
 creating a local backup folder on each server will not work.
 
 ### AWS Cloud Storage
-One can also backup to Amazon cloud using the S3 tab in Backup.
+One can also backup to Amazon cloud using the `amazone S3` tab in Backup configuration.
 
 ![AWS Backup](/images/ee/br-aws-s3.png)
+
+The Access Key & Secret text can be added for the IAM of the user. The destination S3 Bucket where backups are
+stored can be entered in the format shown in the sample above.
 
 ## Backup
 

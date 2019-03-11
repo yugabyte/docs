@@ -30,12 +30,13 @@ User can provide these key/values in any order.
 
 ### Templated Tags
 `Name` is the only key that can have `templated` tags, so it can be made of different parts filled in at run-time to determine node and instance names.
-   - The parts of the template should be enclosed between `${` and `}`.
-   - The reserved keywords that can be specified: `universe`, `instance-id`, `zone`, and `region`.
-   - Templated tag value needs to have `instance-id` at the minimum.
-   - Order of the parts of template do not matter.
 
-### Check Cloud Provider instances
+- The parts of the template should be enclosed between `${` and `}`.
+- The reserved keywords that can be specified: `universe`, `instance-id`, `zone`, and `region`.
+- Templated tag value needs to have `instance-id` at the minimum.
+- Order of the parts of template do not matter.
+
+*Check Cloud Provider instances*
 
 Browse to the cloud provider's instances page. In this example, since we are using AWS as the cloud provider, browse to `EC2` -> `Running Instances`
 in the correct availability zone and search for instances that have `test-tags` in their name. You should see something as follows in the
@@ -53,10 +54,12 @@ The map of instance tags can be changed using the edit universe operation. One c
 
 ![Edit Instance Tags](/images/ee/inst-tags-2.png)
 
-These are changes, compared to the tags input during the create universe:
+These are changes, compared to the input during the create universe:
+
 - `Billing` was modified.
 - `MyInfo` was deleted.
 - `NewInfo` was added.
+- `Department` was not changed in any way.
 Note that `Name` key field cannot be edited in any form.
 
 As before, one can confirm on the cloud provider list of instances that the tags have been updated correctly:
