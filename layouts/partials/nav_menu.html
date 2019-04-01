@@ -1,6 +1,6 @@
 {{ $bundle := . }}
 
-  <ul{{ if eq $.level 1 }} id="drawerMenu"{{ end }}>
+  <ul{{ if and (eq $.level 1) (isset . "is_base_menu") }} id="drawerMenu"{{ end }}>
     {{ range $index, $item := .menu }}
 
       {{/* This condition checks if there previsously were other items with the same name so it will not render this name again */}}
@@ -32,7 +32,7 @@
           {{ end }}
         {{ end }}
 
-        <li {{ if $hasOrIsCurrent }}class="open"{{ end }}>
+        <li {{ if $hasOrIsCurrent }} class="open"{{ end }}>
           {{ partial "nav_link" $.context }}
           {{ if $item.HasChildren }}
             {{ partial "nav_menu" (dict "context" $.context "menu" $item.Children "level" (add $.level 1)) }}
