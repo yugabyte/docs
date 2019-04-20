@@ -192,6 +192,32 @@ REVISION  UPDATED                   STATUS    CHART           DESCRIPTION
 1         Fri Oct  5 09:04:46 2018  DEPLOYED  yugabyte-latest Install complete
 ```
 
+## Connect using YCQL client
+
+By default YugaByte helm will expose only the master ui endpoint via LoadBalancer. If you wish to expose YCQL, YEDIS and YSQL services via LoadBalancer for your app to use, you could do that via the following command.
+
+```sh
+helm install yugabyte -f expose-all.yaml --namespace yb-demo --name yb-demo --wait
+```
+
+One can exec into one of the yb-tserver containers and run the packaged cqlsh to get access to the shell. For example:
+
+```sh
+kubectl exec -it yb-tserver-0 /home/yugabyte/bin/cqlsh
+```
+
+To connect an external program, one needs to get the YCQL service load balancer end point. The command to get the service info and sample output is as below:
+
+```sh
+$ kubectl get services --all-namespaces
+NAMESPACE     NAME                   TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)               AGE
+...
+yb-demo       yql-service            LoadBalancer   10.47.249.27    35.225.153.213   9042:30940/TCP        2m
+...
+```
+
+Any program can use the `EXTERNAL-IP` of the `yql-service` to connect to YugaByte DB via YCQL API.
+
 ## Upgrade Cluster
 
 You can perform rolling upgrades on the YugaByte DB cluster with the following command. Change the `Image.tag` value to any valid tag from [YugaByte DB's listing on the Docker Hub registry](https://hub.docker.com/r/yugabytedb/yugabyte/tags/). By default, the `latest` Docker image is used for the install.
