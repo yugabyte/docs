@@ -194,19 +194,13 @@ REVISION  UPDATED                   STATUS    CHART           DESCRIPTION
 
 ## Connect using YCQL client
 
-By default YugaByte helm will expose only the master ui endpoint via LoadBalancer. If you wish to expose YCQL, YEDIS and YSQL services via LoadBalancer for your app to use, you could do that via the following command.
+By default YugaByte helm will expose only the master ui endpoint via LoadBalancer. If you wish to expose YCQL, YEDIS and YSQL services via LoadBalancer for your app to use, you can do that as follows.
 
 ```sh
 helm install yugabyte -f expose-all.yaml --namespace yb-demo --name yb-demo --wait
 ```
 
-One can exec into one of the yb-tserver containers and run the packaged cqlsh to get access to the shell. For example:
-
-```sh
-kubectl exec -it yb-tserver-0 /home/yugabyte/bin/cqlsh
-```
-
-To connect an external program, one needs to get the YCQL service load balancer end point. The command to get the service info and sample output is as below:
+To connect an external program, get the load balancer IP address of the corresponding service. The example below shows how to do this for the YCQL service.
 
 ```sh
 $ kubectl get services --all-namespaces
@@ -217,6 +211,12 @@ yb-demo       yql-service            LoadBalancer   10.47.249.27    35.225.153.2
 ```
 
 Any program can use the `EXTERNAL-IP` of the `yql-service` to connect to YugaByte DB via YCQL API.
+
+You can connect to this cluster with `cqlsh` as follows:
+
+```sh
+$ cqlsh 35.225.153.213
+```
 
 ## Upgrade Cluster
 
