@@ -197,6 +197,38 @@ cqlsh> SELECT * FROM store.books WHERE id = 4;
   4 | {"author":{"first_name":"John","last_name":"Doe"},"editors":["Robert","Jack","Melisa"],"genre":"novel","name":"Great Expectations","year":1950}
 ```
 
+- Update a missing JSONB subdocument resulting in an insert.
+
+```sql
+cqlsh> UPDATE store.books SET details->'publisher' = '"Chapman and Hall"' WHERE id = 4;
+```
+
+```sql
+cqlsh> SELECT * FROM store.books WHERE id = 4;
+```
+
+```
+ id | details
+----+-------------------------------------------------------------------------------------------------------------------------------------------------
+  4 | {"author":{"first_name":"John","last_name":"Doe"},"editors":["Robert","Jack","Melisa"],"genre":"novel","name":"Great Expectations","publisher":"Chapman and Hall","year":1950}
+```
+
+- Update a multi-hop missing JSONB subdocument resulting in an error.
+
+```sql
+cqlsh> UPDATE store.books SET details->'related'->'preceeded by' = '"A Tale Of Two Cities"' WHERE id = 4;
+```
+
+```sql
+cqlsh> SELECT * FROM store.books WHERE id = 4;
+```
+
+```
+ id | details
+----+-------------------------------------------------------------------------------------------------------------------------------------------------
+  4 | {"author":{"first_name":"John","last_name":"Doe"},"editors":["Robert","Jack","Melisa"],"genre":"novel","name":"Great Expectations","publisher":"Chapman and Hall","year":1950}
+```
+
 ## See Also
 [`Explore Json Documents`](../../../explore/transactional/json-documents)
 [Data Types](..#datatypes)
