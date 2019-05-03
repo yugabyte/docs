@@ -197,36 +197,52 @@ cqlsh> SELECT * FROM store.books WHERE id = 4;
   4 | {"author":{"first_name":"John","last_name":"Doe"},"editors":["Robert","Jack","Melisa"],"genre":"novel","name":"Great Expectations","year":1950}
 ```
 
-- Update a missing JSONB subdocument resulting in an insert.
+- Upsert: Update a missing JSONB document resulting in an insert.
 
 ```sql
-cqlsh> UPDATE store.books SET details->'publisher' = '"Chapman and Hall"' WHERE id = 4;
+INSERT INTO store.books (id, details) VALUES
+  (6, '{}');
+cqlsh> UPDATE store.books SET details->'editors' = '["Adam", "Bryan", "Charles"]' WHERE id = 6;
 ```
 
 ```sql
-cqlsh> SELECT * FROM store.books WHERE id = 4;
+cqlsh> SELECT * FROM store.books WHERE id = 6;
 ```
 
 ```
  id | details
 ----+-------------------------------------------------------------------------------------------------------------------------------------------------
-  4 | {"author":{"first_name":"John","last_name":"Doe"},"editors":["Robert","Jack","Melisa"],"genre":"novel","name":"Great Expectations","publisher":"Chapman and Hall","year":1950}
+  6 | {"editors":["Adam","Bryan","Charles"]}
 ```
 
-- Update a multi-hop missing JSONB subdocument resulting in an error.
+- Upsert: Update a missing JSONB document resulting in an insert of a subdocument.
 
 ```sql
-cqlsh> UPDATE store.books SET details->'related'->'preceeded by' = '"A Tale Of Two Cities"' WHERE id = 4;
+cqlsh> UPDATE store.books SET details->'author' = '{"first_name":"Jack", "last_name":"Kerouac"}' WHERE id = 6;
 ```
 
 ```sql
-cqlsh> SELECT * FROM store.books WHERE id = 4;
+cqlsh> SELECT * FROM store.books WHERE id = 6;
 ```
 
 ```
  id | details
 ----+-------------------------------------------------------------------------------------------------------------------------------------------------
-  4 | {"author":{"first_name":"John","last_name":"Doe"},"editors":["Robert","Jack","Melisa"],"genre":"novel","name":"Great Expectations","publisher":"Chapman and Hall","year":1950}
+  6 | {"author":{"first_name":"Jack","last_name":"Kerouac"},"editors":["Adam","Bryan","Charles"]}
+```
+
+Note that JSONB upsert only works for JSON objects and not for other data types like arrays, integers, strings, etc. Additionally, only the leaf property of an object will be inserted if it is missing. We do not support upsert on non-leaf properties.
+
+- Upsert: Update a non-leaf property resulting in an error.
+
+```sql
+cqlsh> UPDATE store.books SET details->'related'->'language' = '"English"' WHERE id = 6;
+```
+
+- Upsert: Update a missing element of an array resulting in an error.
+
+```sql
+cqlsh> UPDATE store.books SET details->'editors'->>3 = '"David"' WHERE id = 6;
 ```
 
 ## See Also
