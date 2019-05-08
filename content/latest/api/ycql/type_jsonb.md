@@ -233,18 +233,6 @@ cqlsh> SELECT * FROM store.books WHERE id = 6;
 
 Note that JSONB upsert only works for JSON objects and not for other data types like arrays, integers, strings, etc. Additionally, only the leaf property of an object will be inserted if it is missing. We do not support upsert on non-leaf properties.
 
-- Upsert: Update a non-leaf property resulting in an error.
-
-```sql
-cqlsh> UPDATE store.books SET details->'related'->'language' = '"English"' WHERE id = 6;
-```
-
-- Upsert: Update a missing element of an array resulting in an error.
-
-```sql
-cqlsh> UPDATE store.books SET details->'editors'->>3 = '"David"' WHERE id = 6;
-```
-
 ## See Also
 [`Explore Json Documents`](../../../explore/transactional/json-documents)
 [Data Types](..#datatypes)
