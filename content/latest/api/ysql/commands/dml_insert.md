@@ -35,7 +35,10 @@ The `INSERT` command adds one or more rows to the specified table.
 ### Grammar
 
 ```
-insert = INSERT INTO qualified_name [ AS name ] '(' column_list ')' VALUES values_list [ ',' ...];
+insert = INSERT INTO qualified_name [ AS name ] '(' column_list ')'
+         VALUES values_list [ ',' ...]
+         [ ON CONFLICT [ conflict_target ] conflict_action ]
+         [ returning_clause ];
 values_list = '(' expression [ ',' ...] ')';
 ```
 
