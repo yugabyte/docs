@@ -34,7 +34,7 @@ Where
 ## Semantics
 
 - `AUTHORIZATION` clause is not yet supported.
-- Only `CREATE TABLE`, `CREATE VIEW`, `CREATE INDEX`, `CREATE SEQUENCE`, `CREATE TRIGGER`, and `GRANT` can be use to create objects within `CREATE SCHEMA` statement. Other database objects must be created in separate commands after the schema is created.
+- Only `CREATE TABLE`, `CREATE VIEW`, `CREATE INDEX`, `CREATE SEQUENCE`, `CREATE TRIGGER`, and `GRANT` can be used to create objects within `CREATE SCHEMA` statement. Other database objects must be created in separate commands after the schema is created.
 
 ## See Also
 [`CREATE TABLE`](../ddl_create_table)
