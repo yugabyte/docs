@@ -28,15 +28,15 @@ The `SELECT` command retrieves (part of) rows of specified columns that meet a g
 ### Grammar
 
 ```
-select ::= [ WITH [ RECURSIVE ] with_query [ ',' ... ] ]
+select ::= [ WITH [ RECURSIVE ] with_query [, ...] ]
                SELECT [ ALL | DISTINCT [ ON ( expression { , expression } ) ] ]
-               [ * | expression [ [ AS ] name ] [ ',' ... ] ]
-               [ FROM from_item [ ','  ... ] ]
+               [ * | expression [ [ AS ] name ] [, ...] ]
+               [ FROM from_item [,  ...] ]
                [ WHERE condition ]
-               [ GROUP BY grouping_element [ , ...] ]
+               [ GROUP BY grouping_element [, ...] ]
                [ HAVING condition [ ',' condition ] ]
                [ { UNION | INTERSECT | EXCEPT } [ ALL | DISTINCT ] select ]
-               [ ORDER BY order_expr [ ',' ...] ]
+               [ ORDER BY order_expr [, ...] ]
                [ LIMIT [ integer | ALL ] ]
                [ OFFSET integer [ ROW | ROWS ] ] ;
 

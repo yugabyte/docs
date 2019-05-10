@@ -34,18 +34,17 @@ showAsideToc: true
 
 ### Grammar
 ```
-alter_table ::= 'ALTER' 'TABLE' [ 'ONLY' ] name [ '*' ] alter_table_action [, ... ] ;
+alter_table ::= ALTER TABLE [ ONLY ] name [ '*' ] alter_table_action [, ...] ;
 
 alter_table_action ::=
-  { 'ADD' [ 'COLUMN' ] column_name data_type
-    | 'RENAME' 'TO' table_name
-    | 'DROP' [ 'COLUMN' ] column_name [ 'RESTRICT' | 'CASCADE' ]
-    | 'ADD' table_constraint
-    | 'DROP' 'CONSTRAINT' constraint_name [ 'RESTRICT' | 'CASCADE' ]
-    | 'RENAME' [ 'COLUMN' ] column_name 'TO' column_name } ;
+  { ADD [ COLUMN ] column_name data_type
+    | RENAME TO table_name
+    | DROP [ COLUMN ] column_name [ RESTRICT | CASCADE ]
+    | ADD table_constraint
+    | DROP CONSTRAINT constraint_name [ RESTRICT | CASCADE ]
+    | RENAME [ COLUMN ] column_name TO column_name } ;
 
-table_constraint ::=
-  [ 'CONSTRAINT' constraint_name ] 'CHECK' '(' expression ')' [ 'NO' 'INHERIT' ] ;
+table_constraint ::= [ CONSTRAINT constraint_name ] CHECK '(' expression ')' [ NO INHERIT ] ;
 ```
 
 ## Semantics
