@@ -28,8 +28,8 @@ ALTER DATABASE redefines the attributes of the specified database.
 
 ### Grammar
 ```
-alter_database ::=
-  ALTER DATABASE name { [ [ WITH ] alter_database_option [, ...] ]
+alter_database ::= ALTER DATABASE name
+                        { [ [ WITH ] alter_database_option [...] ]
                           | RENAME TO new_name
                           | OWNER TO { new_owner | CURRENT_USER | SESSION_USER }
                           | SET TABLESPACE new_tablespace

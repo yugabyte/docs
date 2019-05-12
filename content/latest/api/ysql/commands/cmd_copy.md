@@ -31,13 +31,13 @@ showAsideToc: true
 
 ### Grammar
 ```
-copy_from ::= COPY table_name [ '(' column_name [, ...] ')' ]
+copy_from ::= COPY table_name [ ( column_name [, ...] ) ]
                   FROM { filename | PROGRAM command | STDIN }
-                  [ [ WITH ] '(' option [ , ... ] ')' ] ;
+                  [ [ WITH ] ( option [, ...] ) ] ;
 
-copy_to ::= COPY { table_name [ '(' column_name [, ...] ')' ] | '(' query ')' }
+copy_to ::= COPY { table_name [ ( column_name [, ...] ) ] | ( query ) }
                 TO ( filename | PROGRAM command | STDOUT )
-                [ [ WITH ] '(' option [, ... ] ')' ] ;
+                [ [ WITH ] ( option [, ...] ) ] ;
 
 copy_option ::=
     FORMAT format_name
@@ -48,9 +48,9 @@ copy_option ::=
     | HEADER [ boolean ]
     | QUOTE quote_character
     | ESCAPE escape_character
-    | FORCE_QUOTE ( '(' column_name [, ...] ')' | '*' )
-    | 'FORCE_NOT_NULL '(' column_name [, ...] ')'
-    | FORCE_NULL '(' column_name [, ...] ')'
+    | FORCE_QUOTE ( ( column_name [, ...] ) | * )
+    | FORCE_NOT_NULL ( column_name [, ...] )
+    | FORCE_NULL ( column_name [, ...] )
     | ENCODING encoding_name
 ```
 

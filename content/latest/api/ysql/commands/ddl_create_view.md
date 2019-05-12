@@ -25,7 +25,7 @@ The `CREATE VIEW` command creates a new view in a database. It defines the view 
 
 ### Grammar
 ```
-create_view ::= CREATE [ OR REPLACE ] VIEW qualified_name [ '(' column_list ')' ] AS query ;
+create_view ::= CREATE [ OR REPLACE ] VIEW qualified_name [ ( column_list ) ] AS query ;
 ```
 
 Where

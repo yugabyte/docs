@@ -34,7 +34,7 @@ showAsideToc: true
 
 ### Grammar
 ```
-alter_table ::= ALTER TABLE [ ONLY ] name [ '*' ] alter_table_action [, ...] ;
+alter_table ::= ALTER TABLE [ ONLY ] name [ * ] alter_table_action [, ...] ;
 
 alter_table_action ::=
   { ADD [ COLUMN ] column_name data_type
@@ -44,7 +44,7 @@ alter_table_action ::=
     | DROP CONSTRAINT constraint_name [ RESTRICT | CASCADE ]
     | RENAME [ COLUMN ] column_name TO column_name } ;
 
-table_constraint ::= [ CONSTRAINT constraint_name ] CHECK '(' expression ')' [ NO INHERIT ] ;
+table_constraint ::= [ CONSTRAINT constraint_name ] CHECK ( expression ) [ NO INHERIT ] ;
 ```
 
 ## Semantics

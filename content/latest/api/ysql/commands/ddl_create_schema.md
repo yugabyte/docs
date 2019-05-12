@@ -23,7 +23,7 @@ showAsideToc: true
 
 ### Grammar
 ```
-create_schema ::= CREATE SCHEMA [ IF NOT EXISTS ] schema_name [ schema_element [, ...] ]
+create_schema ::= CREATE SCHEMA [ IF NOT EXISTS ] schema_name [ schema_element [...] ]
 ```
 
 Where

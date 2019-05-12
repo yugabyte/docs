@@ -32,7 +32,7 @@ create_index ::= CREATE [ UNIQUE ] INDEX [ [ IF NOT EXISTS ] name ]
                      [ INCLUDE ( column_name [, ...] ) ]
                      [ WHERE predicate ]
 
-index_elem ::= { column_name | '(' expression ')' } [ opclass ] [ 'ASC' | 'DESC' ] ;
+index_elem ::= { column_name | ( expression ) } [ opclass ] [ ASC | DESC ] ;
 ```
 
 Where
