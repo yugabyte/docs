@@ -70,22 +70,25 @@ Where
 
 ## Semantics
 
-The bare INSERT variant is straightforward.
-
  - An error is raised if the specified table does not exist. 
+ - An error is raised if a specified column does not exist.
  - Each of the primary key columns must have a non-null value.
+ - Constraints must be satisfied.  
 
 ### `VALUES` Clause
  - Each of the values list must have the same length as the columns list.
  - Each value must be convertible to its corresponding (by position) column type.
  - Each value literal can be an expression.
 
-The INSERT ON CONFLICT variant needs some explanation. The target table must have
-at least one column (list) with either a unique index or a unique constraint. We
-shall refer to this as a unique key. The argument of VALUES is a relation that must
-include at least one of the target table's unique keys. Some of the values of this
-unique key might be new, and others might already exist in the target table. The
-basic aim of INSERT ON CONFLICT is simply to insert the rows with new values of
+### `ON CONFLICT` Clause
+
+- The target table must have at least one column (list) with either a unique index
+or a unique constraint. We shall refer to this as a unique key. The argument of VALUES
+is a relation that must include at least one of the target table's unique keys.
+Some of the values of this unique key might be new, and others might already exist
+in the target table.
+
+- The basic aim of INSERT ON CONFLICT is simply to insert the rows with new values of
 the unique key and to update the rows with existing values of the unique key to
 set the values of the remaining specified columns to those in the VALUES relation.
 In this way, the net effect is either to insert or to update; and for this reason
