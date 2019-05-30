@@ -1,4 +1,4 @@
-## 1. Create universe
+<h2 id="macos-create-universe">1. Create universe</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -81,7 +81,7 @@ $ ./bin/yb-ctl status
 ```
 
 
-## 2. Create a table
+<h2 id="macos-create-table">2. Create a table</h2>
 
 
 Create a YCQL table. The keyspace and table name below must created exactly as shown below, since we will be using the sample application to write data into this table.
@@ -102,7 +102,7 @@ cqlsh> CREATE TABLE ybdemo_keyspace.cassandrakeyvalue (k text PRIMARY KEY, v blo
 For each table, we have instructed YugaByte DB to create 4 shards per tserver present in the universe. Since we have 3 nodes, we expect 12 tablets for the `ybdemo_keyspace.cassandrakeyvalue` table.
 
 
-## 3. Explore tablets
+<h2 id="macos-explore-tablets">3. Explore tablets</h2>
 
 - The tablets are evenly balanced across the various nodes.
 
@@ -143,7 +143,7 @@ $ du -hs /tmp/yugabyte-local-cluster/node*/disk*/yb-data/tserver/data/rocksdb/ta
  20K    /tmp/yugabyte-local-cluster/node-3/disk-2/yb-data/tserver/data/rocksdb/table-9987797012ce4c1c91782c25e7608c34/tablet-5aaeb96381044aa2b09ed9973830bb27
  ```
 
-## 4. Insert/query a table
+<h2 id="macos-query-table">4. Insert/query a table</h2>
 
 Let us insert a key-value entry, with the value size around 2MB. Since the memstores are configured to be 1MB, this will cause the data to flush to disk immediately. Note that the key flags we pass to the sample app are:
 
@@ -218,7 +218,7 @@ We can also easily confirm that the `node-1` indeed has about 10MB of storage be
 ![Inserting values with auto-sharding](/images/ce/auto-sharding-single-kv-insert.png)
 
 
-## 5. Automatic sharding when add nodes
+<h2 id="macos-automatic-sharding">5. Automatic sharding when add nodes</h2>
 
 Let us add one more node to the universe for a total of 4 nodes, by running the following command.
 
@@ -247,7 +247,7 @@ We can verify that the tablets are evenly distributed across the 6 nodes. Each n
 ![Auto sharding when adding three nodes](/images/ce/auto-sharding-add-3-node.png)
 
 
-## 6. Clean up (optional)
+<h2 id="macos-clean-up">6. Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

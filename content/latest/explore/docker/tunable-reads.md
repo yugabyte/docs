@@ -1,4 +1,4 @@
-## 1. Create universe
+<h2 id="docker-create-universe">1. Create universe</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -22,7 +22,7 @@ $ ./yb-docker-ctl add_node
 $ ./yb-docker-ctl add_node
 ```
 
-## 2. Write some data
+<h2 id="docker-write-data">2. Write some data</h2>
 
 Pull the [yb-sample-apps](https://github.com/YugaByte/yb-sample-apps) docker container. This container has built-in Java client programs for various workloads including SQL inserts and updates.
 
@@ -69,14 +69,14 @@ cqlsh> SELECT k FROM ybdemo_keyspace.cassandrakeyvalue;
 (1 rows)
 ```
 
-## 3. Strongly consistent reads from tablet leaders
+<h2 id="docker-tablet-leaders-reads">3. Strongly consistent reads from tablet leaders</h2>
 
 When performing strongly consistent reads as a part of the above command, all reads will be served by the tablet leader of the tablet that contains the key `key:0`. If we browse to the <a href='http://localhost:7000/tablet-servers' target="_blank">tablet-servers</a> page, we will see that all the requests are indeed being served by one tserver:
 
 ![Reads from the tablet leader](/images/ce/tunable-reads-leader-docker.png)
 
 
-## 4. Timeline consistent reads from tablet replicas
+<h2 id="docker-tablet-replicas-timeline-reads">4. Timeline consistent reads from tablet replicas</h2>
 
 Let us stop the above sample app, and run the following variant of the sample app. This command will do updates to the same key `key:0` which will go through the tablet leader, but it will reads from the replicas.
 
@@ -96,7 +96,7 @@ This can be easily seen by refreshing the <a href='http://localhost:7000/tablet-
 ![Reads from the tablet follower](/images/ce/tunable-reads-followers-docker.png)
 
 
-## 5. Clean up (optional)
+<h2 id="docker-clean-up">5. Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

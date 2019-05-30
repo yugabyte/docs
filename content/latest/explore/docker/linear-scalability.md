@@ -1,4 +1,4 @@
-## 1. Create universe
+<h2 id="docker-create-universe">1. Create universe</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -12,7 +12,7 @@ Start a new local cluster with 3-nodes with replication factor 3. We configure t
 $ ./yb-docker-ctl create --rf 3 --num_shards_per_tserver 4
 ```
 
-## 2. Run sample SQL app
+<h2 id="docker-run-sql-app">2. Run sample SQL app</h2>
 
 Pull the [yb-sample-apps](https://github.com/YugaByte/yb-sample-apps) docker container. This container has built-in Java client programs for various workloads including SQL inserts and updates.
 
@@ -37,13 +37,13 @@ The sample application prints some stats while running, which is also shown belo
                                    Write: 1078.74 ops/sec (0.93 ms/op), 33470 total ops  |  ...
 ```
 
-## 3. Observe IOPS per node
+<h2 id="docker-observe-iops">3. Observe IOPS per node</h2>
 
 You can check a lot of the per-node stats by browsing to the <a href='http://localhost:7000/tablet-servers' target="_blank">tablet-servers</a> page. It should look like this. The total read and write IOPS per node are highlighted in the screenshot below. Note that both the reads and the writes are roughly the same across all the nodes indicating uniform usage across the nodes.
 
 ![Read and write IOPS with 3 nodes](/images/ce/linear-scalability-3-nodes-docker.png)
 
-## 4. Add node and observe linear scale out
+<h2 id="docker-add-node-observe-scale">4. Add node and observe linear scale out</h2>
 
 Add a node to the universe.
 
@@ -57,7 +57,7 @@ Now we should have 4 nodes. Refresh the <a href='http://localhost:7000/tablet-se
 
 ![Read and write IOPS with 4 nodes - Balanced](/images/ce/linear-scalability-4-nodes-balanced-docker.png)
 
-## 5. Remove node and observe linear scale in
+<h2 id="docker-remove-node-observe-scale">5. Remove node and observe linear scale in</h2>
 
 Remove the recently added node from the universe.
 
@@ -72,7 +72,7 @@ $ ./yb-docker-ctl remove_node 4
 - After 300s (i.e. 5 minutes), YugaByte DB's remaining nodes will re-spawn new tablets that were lost with the loss of node 4. Each remaining node's tablet count will increase from 18 to 24.
 
 
-## 6. Clean up (optional)
+<h2 id="docker-clean-up">6. Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

@@ -45,7 +45,7 @@ type: page
   <div id="linux" class="tab-pane fade" role="tabpanel" aria-labelledby="linux-tab">
     {{% includeMarkdown "binary/linux-install.md" /%}}
   </div> 
-  <div id="docker" class="tab-pane fade " role="tabpanel" aria-labelledby="docker-tab">
+  <div id="docker" class="tab-pane fade" role="tabpanel" aria-labelledby="docker-tab">
     {{% includeMarkdown "docker/install.md" /%}}
   </div>
   <div id="kubernetes" class="tab-pane fade" role="tabpanel" aria-labelledby="kubernetes-tab">

@@ -1,4 +1,4 @@
-## 1. Create a 1 node cluster with replication factor 1 
+<h2 id="kubernetes-create-1-node-cluster">1. Create a 1 node cluster with replication factor 1</h2>
 
 ```sh
 $ kubectl apply -f yugabyte-statefulset-rf-1.yaml
@@ -14,7 +14,7 @@ statefulset.apps/yb-tserver created
 
 By default, the above command will create a 1 node cluster with Replication Factor (RF) 1. This cluster has 1 pod of yb-master and yb-tserver each. If you want to create a 3 node local cluster with RF 3, then simply change the replica count of yb-master and yb-tserver in the yaml file to 3.
 
-## 2. Check cluster status
+<h2 id="kubernetes-check-cluster-status">2. Check cluster status</h2>
 
 Run the command below to see that we now have two services with 1 pods each - 1 `yb-master` pod (yb-master-1) and 1 `yb-tserver` pods (yb-tserver-1) running. Roles played by these pods in a YugaByte DB cluster (aka Universe) is explained in detail [here](../../architecture/concepts/universe/).
 
@@ -42,7 +42,7 @@ yb-master-0    1/1       Running   0          13s
 yb-tserver-0   1/1       Running   0          12s
 ```
 
-## 3. Initialize the YSQL API
+<h2 id="kubernetes-initialize-ysql-api">3. Initialize the YSQL API</h2>
 
 ```sh
 $ kubectl exec -it yb-master-0 bash --  -c "YB_ENABLED_IN_POSTGRES=1 FLAGS_pggate_master_addresses=yb-master-0.yb-masters.default.svc.cluster.local:7100 /home/yugabyte/postgres/bin/initdb -D /tmp/yb_pg_initdb_tmp_data_dir -U postgres"
@@ -50,7 +50,7 @@ $ kubectl exec -it yb-master-0 bash --  -c "YB_ENABLED_IN_POSTGRES=1 FLAGS_pggat
 
 Clients can now connect to this YugaByte DB universe using YSQL and YCQL APIs on the 5433 and 9042 ports respectively.
 
-## 4. Check cluster status via Kubernetes
+<h2 id="kubernetes-check-status-kubernetes">4. Check cluster status via Kubernetes</h2>
 
 You can see the status of the 3 services by simply running the following command.
 
@@ -66,7 +66,7 @@ yb-masters     ClusterIP      None            <none>        7000/TCP,7100/TCP   
 yb-tservers    ClusterIP      None            <none>        9000/TCP,9100/TCP,9042/TCP,6379/TCP,5433/TCP   11m
 ```
 
-## 5. Check cluster status with Admin UI
+<h2 id="kubernetes-check-status-ui">5. Check cluster status with Admin UI</h2>
 
 In order to do this, we would need to access the UI on port 7000 exposed by any of the pods in the `yb-master` service. In order to do so, we find the URL for the yb-master-ui LoadBalancer service.
 
@@ -80,7 +80,7 @@ http://192.168.99.100:31283
 
 Now, you can view the [yb-master-0 Admin UI](../../admin/yb-master/#admin-ui) is available at the above URL.
 
-### 5.1 Overview and Master status
+<h3 id="kubernetes-overview-master-status">5.1 Overview and Master status</h3>
 
 The yb-master-0 home page shows that we have a cluster (aka a Universe) with `Replication Factor` of 1 and `Num Nodes (TServers)` as 1. The `Num User Tables` is 0 since there are no user tables created yet. YugaByte DB version is also shown for your reference. 
 
@@ -88,7 +88,7 @@ The yb-master-0 home page shows that we have a cluster (aka a Universe) with `Re
 
 The Masters section highlights the 1 yb-master along its corresponding cloud, region and zone placement information. 
 
-### 5.2 TServer status
+<h3 id="kubernetes-tserver-status">5.2 TServer status</h3>
 
 Clicking on the `See all nodes` takes us to the Tablet Servers page where we can observe the 1 tserver along with the time since it last connected to this master via regular heartbeats. Additionally, we can see that the `Load (Num Tablets)` is balanced across all available tservers. These tablets are the shards of the user tables currently managed by the cluster (which in this case is the `system_redis.redis` table). As new tables get added, new tablets will get automatically created and distributed evenly across all the available tservers.
 

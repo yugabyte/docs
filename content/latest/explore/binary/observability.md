@@ -1,11 +1,11 @@
-## Prerequisite
+<h2 id="macos-prerequisite">Prerequisite</h2>
 
 Prometheus is installed on your local machine. If you have not done so already, follow the links below.
 
 - [Download Prometheus](https://prometheus.io/download/)
 - [Get Started with Prometheus](https://prometheus.io/docs/prometheus/latest/getting_started/)
 
-## 1. Create universe
+<h2 id="macos-create-universe">1. Create universe</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -19,7 +19,7 @@ Start a new local cluster - by default, this will create a 3-node universe with 
 $ ./bin/yb-ctl create
 ```
 
-## 2. Run sample key-value app
+<h2 id="macos-run-sample-app">2. Run sample key-value app</h2>
 
 Download the sample app jar.
 
@@ -37,7 +37,7 @@ $ java -jar ./yb-sample-apps.jar \
     --num_threads_write 1
 ```
 
-## 3. Prepare Prometheus config file
+<h2 id="macos-prepare-config">3. Prepare Prometheus config file</h2>
 
 Copy the following into a file called `yugabytedb.yml`.
 
@@ -74,7 +74,7 @@ scrape_configs:
           group: 'ysql'
 ```
 
-## 4. Start Prometheus server
+<h2 id="macos-start-server">4. Start Prometheus server</h2>
 
 Go to the directory where Prometheus is installed and start the Prometheus server as below.
 
@@ -86,7 +86,7 @@ Open the Prometheus UI at http://localhost:9090 and then navigate to the Targets
 
 ![Prometheus Targets](/images/ce/prom-targets.png)
 
-## 5. Analyze key metrics
+<h2 id="macos-analyze-metrics">5. Analyze key metrics</h2>
 
 On the Prometheus Graph UI, you can now plot the read IOPS and write IOPS for the `CassandraKeyValue` sample app. As we can see from the [source code](https://github.com/YugaByte/yugabyte-db/blob/master/java/yb-loadtester/src/main/java/com/yugabyte/sample/apps/CassandraKeyValue.java) of the app, it uses only SELECT statements for reads and INSERT statements for writes (aside from the initial CREATE TABLE). This means we can measure throughput and latency by simply using the metrics corresponding to the SELECT and INSERT statements.
 
@@ -128,7 +128,7 @@ avg(irate(handler_latency_yb_cqlserver_SQLProcessor_InsertStmt_sum[1m])) / avg(i
 ```
 ![Prometheus Read IOPS](/images/ce/prom-write-latency.png)
 
-## 6. Clean up (optional)
+<h2 id="macos-clean-up">6. Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

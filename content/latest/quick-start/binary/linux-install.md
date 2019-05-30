@@ -1,4 +1,4 @@
-## Prerequisites
+<h2 id="linux-prerequisites">Prerequisites</h2>
 
 a) One of the following operating systems
 
@@ -16,7 +16,7 @@ $ python --version
 Python 2.7.10
 ```
 
-## Download
+<h2 id="linux-download">Download</h2>
 
 Download the YugaByte DB CE package as shown below.
 
@@ -28,7 +28,7 @@ $ wget https://downloads.yugabyte.com/yugabyte-ce-1.2.9.0-linux.tar.gz
 $ tar xvfz yugabyte-ce-1.2.9.0-linux.tar.gz && cd yugabyte-1.2.9.0/
 ```
 
-## Configure
+<h2 id="linux-configure">Configure</h2>
 
 You can do this as shown below.
 

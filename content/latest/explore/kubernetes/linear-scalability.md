@@ -1,4 +1,4 @@
-## 1. Create universe
+<h2 id="kubernetes-create-universe">1. Create universe</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -20,7 +20,7 @@ $ minikube dashboard
 
 ![Kubernetes Dashboard](/images/ce/kubernetes-dashboard.png)
 
-## 2. Check cluster status with Admin UI
+<h2 id="kubernetes-check-status">2. Check cluster status with Admin UI</h2>
 
 In order to do this, we would need to access the UI on port 7000 exposed by any of the pods in the `yb-master` service (one of `yb-master-0`, `yb-master-1` or `yb-master-2`). In order to do so, we find the URL for the yb-master-ui LoadBalancer service.
 
@@ -35,7 +35,7 @@ http://192.168.99.100:31283
 Now, you can view the [yb-master-0 Admin UI](../../admin/yb-master/#admin-ui) is available at the above URL.
 
 
-## 3. Add node and observe linear scale out
+<h2 id="kubernetes-add-node-observe-scale">3. Add node and observe linear scale out</h2>
 
 Add a node to the universe.
 
@@ -62,7 +62,7 @@ yb-tserver-2   1/1       Running   0          5m
 yb-tserver-3   1/1       Running   0          4m
 ```
 
-## 4. Scale back down to 3 nodes
+<h2 id="kubernetes-scale-down">4. Scale back down to 3 nodes</h2>
 
 The cluster can now be scaled back to only 3 nodes.
 
@@ -85,7 +85,7 @@ yb-tserver-2   1/1       Running       0          6m
 yb-tserver-3   1/1       Terminating   0          5m
 ```
 
-## 5. Clean up (optional)
+<h2 id="kubernetes-clean-up">5. Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

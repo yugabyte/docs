@@ -1,4 +1,4 @@
-## Prerequisites
+<h2 id="macos-prerequisites">Prerequisites</h2>
 
 a) <i class="fab fa-apple" aria-hidden="true"></i> macOS 10.12 (Sierra) or higher
 
@@ -14,7 +14,7 @@ Python 2.7.10
 
 c) Make sure that your file limits for kern.maxfiles and kern.maxfilesperproc are 1048576. Edit `/etc/sysctl.conf` on High Sierra if necessary.
 
-## Download
+<h2 id="macos-download">Download</h2>
 
 Download the YugaByte DB CE package as shown below.
 
@@ -26,7 +26,7 @@ $ wget https://downloads.yugabyte.com/yugabyte-ce-1.2.9.0-darwin.tar.gz
 $ tar xvfz yugabyte-ce-1.2.9.0-darwin.tar.gz && cd yugabyte-1.2.9.0/
 ```
 
-## Configure
+<h2 id="macos-configure">Configure</h2>
 
 Add a few loopback IP addresses to cover the add node scenarios of the [Explore Core Features](../../explore/) section.
 

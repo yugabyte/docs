@@ -1,4 +1,4 @@
-## 1. Create universe
+<h2 id="macos-create-universe">1. Create universe</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -12,7 +12,7 @@ Start a new 3-node RF3 cluster. We configure the number of [shards](../../archit
 $ ./bin/yb-ctl --rf 3 --num_shards_per_tserver 4 create
 ```
 
-## 2. Run sample key-value app
+<h2 id="macos-run-app">2. Run sample key-value app</h2>
 
 Download the sample app jar.
 
@@ -36,13 +36,13 @@ The sample application prints some stats while running, which is also shown belo
 2018-05-10 09:10:24,539 [INFO|...] Read: 9110.92 ops/sec (0.44 ms/op), 863720 total ops  |  Write: 1034.06 ops/sec (0.97 ms/op), 102291 total ops  | ...
 ```
 
-## 3. Observe IOPS per node
+<h2 id="macos-observe-iops">3. Observe IOPS per node</h2>
 
 You can check a lot of the per-node stats by browsing to the <a href='http://127.0.0.1:7000/tablet-servers' target="_blank">tablet-servers</a> page. It should look like this. The total read and write IOPS per node are highlighted in the screenshot below. Note that both the reads and the writes are roughly the same across all the nodes indicating uniform usage across the nodes.
 
 ![Read and write IOPS with 3 nodes](/images/ce/linear-scalability-3-nodes.png)
 
-## 4. Add node and observe linear scaling
+<h2 id="macos-add-node-observe-scaling">4. Add node and observe linear scaling</h2>
 
 Add a node to the universe.
 
@@ -58,7 +58,7 @@ The YugaByte DB universe automatically let the client know to use the newly adde
 
 ![Read and write IOPS with 4 nodes](/images/ce/linear-scalability-4-nodes-balanced.png)
 
-## 5. Remove node and observe linear scale in
+<h2 id="macos-remove-node-observe-scale">5. Remove node and observe linear scale in</h2>
 
 Remove the recently added node from the universe.
 
@@ -74,7 +74,7 @@ $ ./bin/yb-ctl remove_node 4
 
 ![Read and write IOPS with 4th node removed](/images/ce/linear-scalability-3-nodes-rebalanced.png)
 
-## 6. Clean up (optional)
+<h2 id="macos-clean-up">6. Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

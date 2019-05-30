@@ -1,4 +1,4 @@
-## Prerequisites
+<h2 id="kubernetes-prerequisites">Prerequisites</h2>
 
 You must have [Minikube](https://github.com/kubernetes/minikube) installed on your localhost. [Follow these instructions](https://kubernetes.io/docs/tasks/tools/install-minikube/) to install Minikube along with its prerequisites.
 
@@ -12,7 +12,7 @@ $ minikube version
 minikube version: v0.25.0
 ```
 
-## Start Kubernetes
+<h2 id="kubernetes-start-kubernetes">Start Kubernetes</h2>
 
 Start Kubernetes via Minikube with the following command.
 
@@ -37,7 +37,7 @@ Client Version: version.Info{Major:"1", Minor:"9", GitVersion:"v1.9.1", ...}
 Server Version: version.Info{Major:"1", Minor:"8", GitVersion:"v1.8.0", ...}
 ```
 
-## Download
+<h2 id="kubernetes-download">Download</h2>
 
 Download `yugabyte-statefulset.yaml`. This will create a local YugaByte DB cluster on Kubernetes with a replication factor of 3.
 

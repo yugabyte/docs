@@ -127,11 +127,28 @@
       // Synced tabs behaviour
       $(document).ready(() => {
         const url = document.location.toString();
-        if (url.match('#')) {
-          $('.tab-pane').removeClass('active').removeClass('show');
-          $('.tab-pane#'+url.split('#')[1]).addClass('active').addClass('show');
+        const hashMatch = url.match('#');
 
-           // $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+        // Get hash value and ensure that it is not an empty string
+        if (hashMatch && hashMatch.index < url.length - 1) {
+          const hashValue = url.substr(hashMatch.index + 1);
+          const section = hashValue.split('-')[0];
+          
+          $('.tab-pane').removeClass('active').removeClass('show');
+          
+          // Check that we are accessing a subsection
+          if (['macos', 'linux', 'docker', 'kubernetes'].includes(section)) {
+
+            // Show the tab content
+            $(`.nav-tabs a[href="#${section}"]`).tab('show');
+            $(`.tab-pane#${section}`).addClass('active').addClass('show');
+
+            // Next line is required to work around a bug in WebKit (Chrome / Safari)
+            window.location.href = '#';
+            window.location.href = `#${hashValue}`;
+          } else {
+            $('.tab-pane#'+url.split('#')[1]).addClass('active').addClass('show');
+          }
         } 
 
         $('.nav-tabs li a, .nav-tabs-alt li a').click(function (e) {     

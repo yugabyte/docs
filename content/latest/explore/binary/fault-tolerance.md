@@ -1,4 +1,4 @@
-## 1. Create universe
+<h2 id="macos-create-universe">1. Create universe</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -12,7 +12,7 @@ Start a new local cluster - a 3-node universe with a replication factor of 3.
 $ ./bin/yb-ctl --rf 3 create
 ```
 
-## 2. Run sample key-value app
+<h2 id="macos-sample-app">2. Run sample key-value app</h2>
 
 Download the sample app jar.
 
@@ -37,13 +37,13 @@ The sample application prints some stats while running, which is also shown belo
 2018-05-10 09:10:24,539 [INFO|...] Read: 9110.92 ops/sec (0.44 ms/op), 863720 total ops  |  Write: 1034.06 ops/sec (0.97 ms/op), 102291 total ops  | ...
 ```
 
-## 3. Observe even load across all nodes
+<h2 id="macos-observe-load">3. Observe even load across all nodes</h2>
 
 You can check a lot of the per-node stats by browsing to the <a href='http://127.0.0.1:7000/tablet-servers' target="_blank">tablet-servers</a> page. It should look like this. The total read and write IOPS per node are highlighted in the screenshot below. Note that both the reads and the writes are roughly the same across all the nodes indicating uniform usage across the nodes.
 
 ![Read and write IOPS with 3 nodes](/images/ce/pgsql-fault-tolerance-3-nodes.png)
 
-## 4. Remove a node and observe continuous write availability
+<h2 id="macos-remove-node">4. Remove a node and observe continuous write availability</h2>
 
 Remove a node from the universe.
 
@@ -56,7 +56,7 @@ Refresh the <a href='http://127.0.0.1:7000/tablet-servers' target="_blank">table
 ![Read and write IOPS with 3rd node dead](/images/ce/pgsql-fault-tolerance-1-node-dead.png)
 
 
-## 4. Remove another node and observe write unavailability
+<h2 id="macos-write-unavailability">5. Remove another node and observe write unavailability</h2>
 
 Remove another node from the universe.
 
@@ -68,7 +68,7 @@ Refresh the <a href='http://127.0.0.1:7000/tablet-servers' target="_blank">table
 
 ![Read and write IOPS with 2nd node removed](/images/ce/pgsql-fault-tolerance-2-nodes-dead.png)
 
-## 6. Clean up (optional)
+<h2 id="macos-clean-up">6. Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

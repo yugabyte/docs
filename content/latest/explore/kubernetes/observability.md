@@ -1,4 +1,4 @@
-## 1. Create universe
+<h2 id="kubernetes-create-universe">1. Create universe</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -12,7 +12,7 @@ Start a new local cluster - by default, this will create a 3 node universe with 
 $ kubectl apply -f yugabyte-statefulset.yaml
 ```
 
-## Step 6. Clean up (optional)
+<h2 id="kubernetes-clean-up">Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

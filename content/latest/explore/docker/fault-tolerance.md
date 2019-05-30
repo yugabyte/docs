@@ -1,4 +1,4 @@
-## 1. Create universe
+<h2 id="docker-create-universe">1. Create universe</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -35,11 +35,11 @@ cqlsh> CREATE KEYSPACE users;
 cqlsh> CREATE TABLE users.profile (id bigint PRIMARY KEY,
 	                               email text,
 	                               password text,
-	                               profile frozen<map<text, text>>);
+	                               profile frozen&lt;map&lt;text, text&gt;&gt;);
 ```
 
 
-## 2. Insert data through node 1
+<h2 id="docker-insert-data">2. Insert data through node 1</h2>
 
 Now insert some data by typing the following into cqlsh shell we joined above.
 
@@ -74,7 +74,7 @@ cqlsh> SELECT email, profile FROM users.profile;
 ```
 
 
-## 3. Read data through another node
+<h2 id="docker-read-data">3. Read data through another node</h2>
 
 Let us now query the data from node 5.
 
@@ -95,7 +95,7 @@ cqlsh> SELECT email, profile FROM users.profile;
 (2 rows)
 ```
 
-## 4. Verify that one node failure has no impact
+<h2 id="docker-verify-failure">4. Verify that one node failure has no impact</h2>
 
 We have 5 nodes in this universe. You can verify this by running the following.
 
@@ -146,7 +146,7 @@ cqlsh> SELECT email, profile FROM users.profile;
 ```
 
 
-## 5. Verify that second node failure has no impact
+<h2 id="docker-verify-second-failure">5. Verify that second node failure has no impact</h2>
 
 This cluster was created with replication factor 5 and hence needs only 3 replicas to make consensus. Therefore, it is resilient to 2 failures without any data loss. Let us simulate another node failure.
 
@@ -192,7 +192,7 @@ cqlsh> SELECT email, profile FROM users.profile;
 ```
 
 
-## Step 6. Clean up (optional)
+<h2 id="docker-clean-up">Step 6. Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

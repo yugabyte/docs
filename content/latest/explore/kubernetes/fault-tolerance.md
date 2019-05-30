@@ -1,4 +1,4 @@
-## 1. Create universe
+<h2 id="kubernetes-create-universe">1. Create universe</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -43,11 +43,11 @@ cqlsh> CREATE KEYSPACE users;
 cqlsh> CREATE TABLE users.profile (id bigint PRIMARY KEY,
 	                               email text,
 	                               password text,
-	                               profile frozen<map<text, text>>);
+	                               profile frozen&lt;map&lt;text, text&gt;&gt;);
 ```
 
 
-## 2. Insert data through node 1
+<h2 id="kubernetes-insert-data">2. Insert data through node 1</h2>
 
 Now insert some data by typing the following into cqlsh shell we joined above.
 
@@ -81,7 +81,7 @@ cqlsh> SELECT email, profile FROM users.profile;
 ```
 
 
-## 3. Read data through another node
+<h2 id="kubernetes-read-data">3. Read data through another node</h2>
 
 Let us now query the data from node 3.
 
@@ -105,7 +105,7 @@ cqlsh> SELECT email, profile FROM users.profile;
 cqlsh> exit;
 ```
 
-## 4. Verify one node failure has no impact
+<h2 id="kubernetes-verify-failure">4. Verify one node failure has no impact</h2>
 
 This cluster was created with replication factor 3 and hence needs only 2 replicas to make consensus. Therefore, it is resilient to 1 failure without any data loss. Let us simulate node 3 failure.
 
@@ -160,7 +160,7 @@ cqlsh> SELECT email, profile FROM users.profile;
 ```
 
 
-## 5. Verify that Kubernetes brought back the failed node
+<h2 id="kubernetes-verify-node">5. Verify that Kubernetes brought back the failed node</h2>
 
 We can now check the cluster status to verify that Kubernetes has indeed brought back the `yb-tserver-2` node that had failed before. This is because the replica count currently effective in Kubernetes for the `yb-tserver` StatefulSet is 3 and there were only 2 nodes remaining after 1 node failure. 
 
@@ -180,7 +180,7 @@ yb-tserver-2   1/1       Running   0          7s
 
 YugaByte DB's fault tolerance when combined with Kubernetes's automated operations ensures that planet-scale applications can be run with ease while ensuring extreme data resilience.
 
-## 6. Clean up (optional)
+<h2 id="kubernetes-clean-up">6. Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

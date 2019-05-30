@@ -1,4 +1,4 @@
-## 1. Create a multi-zone universe in US West
+<h2 id="macos-multi-zone-universe">1. Create a multi-zone universe in US West</h2>
 
 If you have a previously running local universe, destroy it using the following.
 
@@ -20,7 +20,7 @@ You can view the tablet servers on the [tablet servers page](http://localhost:70
 
 ![Multi-zone universe tservers](/images/ce/online-reconfig-multi-zone-tservers.png)
 
-## 2. Start a workload
+<h2 id="kubernetes-start-workload">2. Start a workload</h2>
 
 Download the sample app jar.
 
@@ -41,7 +41,7 @@ You should now see some read and write load on the [tablet servers page](http://
 
 ![Multi-zone universe load](/images/ce/online-reconfig-multi-zone-load.png)
 
-## 3. Add nodes in US East and Tokyo regions
+<h2 id="macos-add-nodes">3. Add nodes in US East and Tokyo regions</h2>
 
 ### Add new nodes
 Add a node in the zone `us-east-1a` of region `us-east-1`. 
@@ -73,7 +73,7 @@ You should see that the data as well as the IO gradually moves from the nodes in
 
 ![Multi region workload](/images/ce/online-reconfig-multi-region-load.png)
 
-## 4. Retire old nodes
+<h2 id="macos-retire-nodes">4. Retire old nodes</h2>
 
 ### Start new masters
 Next we need to move the YB-Master from the old nodes to the new nodes. In order to do so, first start a new masters on the new nodes.
@@ -117,7 +117,7 @@ $ ./bin/yb-ctl remove_node 3
 
 ![Add master](/images/ce/online-reconfig-remove-nodes.png)
 
-## 5. Clean up (optional)
+<h2 id="macos-clean-up">5. Clean up (optional)</h2>
 
 Optionally, you can shutdown the local cluster created in Step 1.
 

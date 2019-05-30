@@ -1,7 +1,7 @@
 **NOTE:**
 The Docker option to run local clusters is recommended only for advanced Docker users. This is because running stateful apps like YugaByte DB in Docker is more complex and error-prone than the more common stateless app use cases.
 
-## Prerequisites
+<h2 id="docker-prerequisites">Prerequisites</h2>
 
 a) You must have the Docker runtime installed on your localhost. Follow the links below to download and install Docker if you have not done so already.
 
@@ -25,7 +25,7 @@ $ python --version
 Python 2.7.10
 ```
 
-## Download
+<h2 id="docker-download">Download</h2>
 
 Download the [yb-docker-ctl](../../admin/yb-docker-ctl/) utility. This utility has a set of pre-built commands to create and thereafter administer a containerized local cluster. 
 
@@ -37,7 +37,7 @@ $ mkdir ~/yugabyte && cd ~/yugabyte
 $ wget https://downloads.yugabyte.com/yb-docker-ctl && chmod +x yb-docker-ctl
 ```
 
-## Install
+<h2 id="docker-install">Install</h2>
 
 Confirm that Docker and python are installed correctly.
 
