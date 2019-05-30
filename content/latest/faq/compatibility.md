@@ -51,14 +51,16 @@ YugaByte DB's goal is to remain as compatible with PostgreSQL as possible. If yo
 
 1. [JSONB](../../develop/learn/data-types/) column type for modeling document data
 2. [Distributed transactions](../../develop/learn/acid-transactions/) for multi-row ACID transactions
+3. [Official Jepsen tests](https://blog.yugabyte.com/yugabyte-db-1-2-passes-jepsen-testing/) to prove correctness under extreme failure conditions
 
-- Following are the features that are present in both YCQL and Apache Cassandra QL but YCQL provides strict consistency guarantees.
+- Following are the features that are present in both YCQL and Apache Cassandra QL but YCQL provides stricter guarantees.
 
 1. [Secondary indexes](../../develop/learn/data-modeling/) are by default strongly consistent since internally they use distributed transactions.
+2. [INTEGER](../../api/ycql/type_int/) and [COUNTER](../../api/ycql/type_int/) datatypes are equivalent and both can be incremented without any lightweight transactions.
 
 - Following are the features that are either unnecessary or disallowed in YCQL.
 
-1. Lightweight transactions for compare-and-swap operations are unnecessary because YCQL achieves single row linearizability by default.
+1. Lightweight transactions for compare-and-swap operations (such as increment) are unnecessary because YCQL achieves single row linearizability by default.
 2. Tunable write consistency is disallowed in YCQL because writes are committed at quorum using Raft replication protocol.
 
 ### Do INSERTs do “upserts” by default? How do I insert data only if it is absent?
