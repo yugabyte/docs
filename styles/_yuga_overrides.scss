@@ -953,6 +953,29 @@ a {
       }
     }
   }
+
+  .help-footer-btn {
+    position: fixed;
+    bottom: 0;
+    right: 60px;
+    height: 36px;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 4px 4px 0 0;
+    font-size: 11px;
+    background-color: #f75821;
+    cursor: pointer;
+    z-index: 9999;
+
+    &:hover {
+      background-color: #d24818;
+    }
+
+    i {
+      color: white;
+      margin-right: 5px;
+    }
+  }
 }
 .pagination a .button,
 .pagination a .title {
