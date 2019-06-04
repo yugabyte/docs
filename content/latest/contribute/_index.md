@@ -5,7 +5,7 @@ description: Get Involved with YugaByte DB
 image: /images/section_icons/index/quick_start.png
 headcontent: Contributing code to improve YugaByte DB.
 type: page
-section: CONTRIBUTE
+section: CONTRIBUTOR GUIDES
 menu:
   latest:
     identifier: contribute-to-yugabyte-db
@@ -19,19 +19,20 @@ We are big believers in open source. YugaByte DB is open-sourced under the Apach
 
 There are a number of resources to get started, here is a recommended reading list:
 
-* Go through the [architecture section of the docs](https://docs.yugabyte.com/latest/architecture/). It will give an overview of the high level components in the database.
+* Go through the [architecture section of the docs](../architecture/). It will give an overview of the high level components in the database.
+
 
 ## Pick an area
 
 There are a few areas you can get involved in depending on your interests.
 
-### Database core
+### Core Database
 
-This is the C++ code and the unit tests that comprise the core of YugaByte DB. You can [follow the steps outlined here](database-core/checklist) to get going with steps such as building the codebase and running the unit tests.
+This is the C++ code and the unit tests that comprise the core of YugaByte DB. You can [follow the steps outlined here](core-database/checklist) to get going with steps such as building the codebase and running the unit tests.
 
 ### Docs
 
-[YugaByte DB documentation](https://docs.yugabyte.com) uses the Hugo framework. There are two types of docs issues - infrastructure enhancements and adding content. You can [follow the steps outlined here](https://github.com/YugaByte/docs) to run a local version of the docs site. Next, look at the [contributing guide](https://github.com/YugaByte/docs/blob/master/CONTRIBUTING.md) to make your changes and contribute them.
+[YugaByte DB documentation](/) uses the Hugo framework. There are two types of docs issues - infrastructure enhancements and adding content. You can [follow the steps outlined here](https://github.com/YugaByte/docs) to run a local version of the docs site. Next, look at the [contributing guide](https://github.com/YugaByte/docs/blob/master/CONTRIBUTING.md) to make your changes and contribute them.
 
 ## Find an issue
 
