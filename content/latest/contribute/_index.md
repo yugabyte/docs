@@ -12,7 +12,7 @@ menu:
     weight: 2900
 ---
 
-We are big believers in open source. YugaByte DB is open-sourced under the Apache v2.0 license, which is very permissive. We love external contributions and fully welcome them! We accept contributions as GitHub pull requests. This page contains everything you need to get you going quickly.
+We are big believers in open source. [YugaByte DB](https://github.com/YugaByte/yugabyte-db) is distributed under the Apache v2.0 license, which is very permissive open source license. We value external contributions and fully welcome them! We accept contributions as GitHub pull requests. This page contains everything you need to get you going quickly.
 
 
 ## Learn about the architecture
