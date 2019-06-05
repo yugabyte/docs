@@ -990,7 +990,9 @@ a {
   
   .help-footer-menu {
     position: fixed;
-    background-color: rgb(230, 230, 230);
+    background-color: #fcfcfc;
+    border-left: 1px solid #f2f2f2;
+    border-right: 1px solid #f2f2f2;
     padding: 5px 20px 10px 20px;
     bottom: -150px;
     right: 60px;
