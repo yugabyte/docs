@@ -1,3 +1,8 @@
+# THIS REPO HAS MOVED [HERE](https://github.com/YugaByte/yugabyte-db/tree/master/docs).
+# DO NOT USE THIS CODEBASE ANYMORE.
+
+
+
 # YugaByte DB Docs
 
 This repository contains the documentation for YugaByte DB available at https://docs.yugabyte.com/
